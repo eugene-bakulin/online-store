@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Passion+One:wght@900&family=Roboto&display=swap" rel="stylesheet">
+    <title>Online Store</title>
+</head>
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="header-logo">
+                <a class="header-logo_a" href=""><h1 class="header-logo_h"><span class="header-logo_span_first">MOTO</span><span class="header-logo_span_second">trolling</span></h1></a>
+            </div>
+            <div class="header_fav_cart">
+                <div class="header-cart">
+                    <input type="button" class="cart-quantity" value="0" data-counter>
+                    <img class="header-cart_img" src="./img/shopping-cart.svg" alt="Shopping cart">
+                </div>
+            </div>
+        </div>
+        <div class="head-line">
+            <span></span>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-wrapper">
+            <div class="main_filter">
+
+            </div>
+            <div class="main_goods">
+
+            </div>
+        </div>
+
+        <div class="popup"></div>
+    </main>
+
+    <footer>
+        <div class="footer-line">
+            <span></span>
+        </div>
+        <div class="footer-wrapper">
+            <div class="footer_github">
+                <a class="footer_github_a" href="https://github.com/eugene-bakulin" target="_blank">&copy; Eugene Bakulin, 2022</a>
+            </div>
+            <div class="footer_rsschool">
+                <a class="footer_rsschool_a" href="https://rs.school/js/" target="_blank"><img src="./img/rs_school_js.svg" alt="RSSchool"></a>
+            </div>
+        </div>
+
+    </footer>
+
+    <template id="__goodsCardTemplate">
+        <div class="item-card">
+            <div class="card__photo">
+                <img class="card__photo-img" src="" alt="photo">
+            </div>
+            <div class="card__description">
+                <h3 class="card__description-title"></h2>
+                <h3 class="card__description-price"></h3>
+                <p class="show-more">Click to show more!</p>
+            </div>
+            <div class="card__add">
+                <div class="card__in-cart">
+                    In cart!
+                </div>
+                <div class="card__add-to-cart" data-title="Add to cart!">
+                    <img class="card__cart_img" src="./img/shopping-cart.svg" alt="Shopping cart">
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="__popup">
+        <div class="popup-overlay">
+            <div class="popup__item-card">
+                <div class="popup__card__photo">
+                    <img class="popup__card__photo-img" src="" alt="photo">
+                </div>
+                <div class="popup__card__description">
+                    <h2 class="popup__card__description-title"></h2>
+                    <h3 class="popup__card__description-price"></h3>
+                    <ul class="card__description-info">
+                        <li class="card-li card__description-type"></li>
+                        <li class="card-li card__description-color"></li>
+                        <li class="card-li card__description-engineType"></li>
+                        <li class="card-li card__description-engineV"></li>
+                        <li class="card-li card__description-engineHp"></li>
+                        <li class="card-li card__description-fuelTankV"></li>
+                        <li class="card-li card__description-weight"></li>
+                        <li class="card-li card__description-country"></li>
+                        <li class="card-li card__description-description"></li>
+                        <li class="card-li card__description-availability"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="__filtersTemplate">
+        <div class="search-sort-filter">
+            <div class="search-wrapper">
+                <fieldset class="__search">
+                    <legend><h3>Search</h3></legend>
+                    <form class="__search-form">
+                        <input type="search" id="search-field" placeholder="Find your moto..." autocomplete="off" autofocus>
+                        <input type="submit" id="search-submit" value="Find it!">
+                    </form>
+                </fieldset>
+            </div>
+            <div class="sort-wrapper">
+                <fieldset class="__sort">
+                    <legend><h3>Sort</h3></legend>
+                    <div class="sort-item">
+                        <input type="radio" class="sort" id="sort_name_asc" name="sort">
+                        <label for="sort_name_asc" class="sort">Name &#8593;</label><br/>
+                    </div>
+                    
+                    <div class="sort-item">
+                        <input type="radio" class="sort" id="sort_name_desc" name="sort">
+                        <label for="sort_name_desc" class="sort">Name &#8595;</label><br/>
+                    </div>
+                    
+                    <div class="sort-item">
+                        <input type="radio" class="sort" id="sort_price_asc" name="sort">
+                        <label for="sort_price_asc" class="sort">Price &#8593;</label><br/>
+                    </div>
+                    
+                    <div class="sort-item">
+                        <input type="radio" class="sort" id="sort_price_desc" name="sort">
+                        <label for="sort_price_desc" class="sort">Price &#8595;</label><br/>
+                    </div>
+                    
+                    <div class="sort-item">
+                        <input type="radio" class="sort" id="sort_no" name="sort">
+                        <label for="sort_no" class="sort">No sort</label>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="filter-wrapper">
+                <fieldset class="filter__popularity">
+                    <legend>
+                        <h3>Popularity</h3>
+                    </legend>
+                    <div class="filter-item">
+                        <input type="checkbox" class="sort" id="sort_only-popular">
+                        <label for="sort_only-popular" class="sort">Show popular</label><br/>
+                    </div>
+                </fieldset>
+                <fieldset class="filter__type type">
+                    <legend>
+                        <h3>Type of moto</h3>
+                    </legend>
+                </fieldset>
+        
+                <fieldset class="filter__manufacturer brand">
+                    <legend>
+                        <h3>Manufacturer</h3>
+                    </legend>
+                </fieldset>
+        
+                <fieldset class="filter__origin-country country">
+                    <legend>
+                        <h3>Country of origin</h3>
+                    </legend>
+                </fieldset>
+        
+                <fieldset class="filter__color color">
+                    <legend>
+                        <h3>Color</h3>
+                    </legend>
+                </fieldset>
+        
+                <fieldset class="filter__price price">
+                    <legend>
+                        <h3>Price</h3>
+                    </legend>
+                </fieldset>
+        
+                <fieldset class="filter__availability availability">
+                    <legend>
+                        <h3>Availability</h3>
+                    </legend>
+                </fieldset>
+
+                <fieldset class="filter__engineV engineV">
+                    <legend>
+                        <h3>Engine volume</h3>
+                    </legend>
+                </fieldset>
+                
+                <div class="filter__button-clear clear-filters">
+                    <button class="button-clear" name="button">Clear filters</button>
+                </div>
+
+                <div class="filter__button-clear clear-cart">
+                    <button class="button-clear" name="button">Clear cart</button>
+                </div>
+
+                <div class="filter__button-clear clear-all">
+                    <button class="button-clear" name="button">Clear all settings</button>
+                </div>
+
+            </div>
+        </div>
+    </template>
+    
+</body>
+</html>
